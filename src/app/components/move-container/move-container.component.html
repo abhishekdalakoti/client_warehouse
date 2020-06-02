@@ -1,0 +1,33 @@
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">WELCOME TO CONTAINER MANAGER</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="/add" class = "navbarButtons">ADD CONTAINER</a></li>
+				<li><a class = "navbarButtons">DELETE CONTAINER</a></li>
+				<li><a class = "navbarButtons">MOVE</a></li>
+			</ul>
+		</div>
+	</nav>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" style="margin-left: 10es;">
+    
+        <label>
+            Select Container to Move:
+        <select class="custom-select" (click)="choosedestination(item.id)" formControlName="to_move" required>
+            <option value="" disabled>Choose your Container to Move</option>
+            <option *ngFor="let item of container_initial" [ngValue]="item.id">{{item.id}}</option>
+        
+         </select>
+        </label>
+        <label>
+            List of valid Container to move
+        <select class="custom-select"  formControlName="to">
+            <option value="" disabled>Choose your Destination Container </option>
+            <option *ngFor="let item of container_final" [ngValue]="item.id">{{item.id}}</option>
+         </select>
+        </label>
+            
+        <button type="submit">Submit</button>
+</form>
